@@ -1,7 +1,7 @@
 name: KillBounty
 main: CyberTech\Main
-version: 1.0.1.0 
-api: 1.0.1.0
+version: 1.0.1.1
+api: 1.0.1.1
 
 commands:
     bounty:
