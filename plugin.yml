@@ -1,0 +1,14 @@
+name: KillBounty
+main: CyberTech\Main
+version: 1.0.0.1 
+api: 1.0.0.1
+
+commands:
+    bounty:
+        description: "Base Bounty Command"
+        promission: Bounty
+        useage: "/bounty <set/del> <player> <Price>"
+promissions:
+    Bounty:
+        default: true
+        description: "ss"
