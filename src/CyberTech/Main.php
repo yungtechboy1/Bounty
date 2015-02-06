@@ -1,6 +1,6 @@
 <?php
 /*
- * KillBounty (v1.0.1.1) by CyberTech++
+ * KillBounty (v1.0.1.2) by CyberTech++
  * Developer: CyeberTech++ (Yungtechboy1)
  * Website: http://www.cybertechpp.com
  * Date: 2/3/2015 11:47 PM (UTC)
@@ -102,7 +102,7 @@ class Main extends PluginBase implements Listener{
                     $player1 = $sendplayer->getName();
                     $player2 = $setplayer;
                     $a2 = $args[2];
-                    $stmt = $this->db->prepare("INSERT OR REPLACE INTO bounty (player, amount, setby) VALUES (:bounty, :amount, :setby);");
+                    $stmt = $this->db->prepare("INSERT INTO bounty (player, amount, setby) VALUES (:bounty, :amount, :setby);");
                     $stmt->bindValue(":bounty", $setplayer);
                     $stmt->bindValue(":amount", $a2);
                     $stmt->bindValue(":setby", $sendplayer->getName());
@@ -131,7 +131,7 @@ class Main extends PluginBase implements Listener{
             $temp = $yml->getAll();
             $player = $death->getEntity();
             if ($player instanceof Player){;
-            $killer = $death->getEntity()->getLastDamageCause()->getEntity();
+            $killer = $death->getEntity()->getLastDamageCause()->getDamager();
             if ($killer instanceof Player){
             if ($this->CheckIfPlayerHasBounty($player) === TRUE){
                     $yml = (new Config($this->getServer()->getDataPath() . "/plugins/Bounty/" . "Bounty.yml", Config::YAML ,array()));
