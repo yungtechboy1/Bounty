@@ -1,6 +1,6 @@
 <?php
 /*
- * KillBounty (v1.0.1.2) by CyberTech++
+ * KillBounty (v1.0.1.3) by CyberTech++
  * Developer: CyeberTech++ (Yungtechboy1)
  * Website: http://www.cybertechpp.com
  * Date: 2/3/2015 11:47 PM (UTC)
@@ -133,7 +133,7 @@ class Main extends PluginBase implements Listener{
             if ($player instanceof Player){;
             $killer = $death->getEntity()->getLastDamageCause()->getDamager();
             if ($killer instanceof Player){
-            if ($this->CheckIfPlayerHasBounty($player) === TRUE){
+            if ($this->CheckIfPlayerHasBounty($player) == $player){
                     $yml = (new Config($this->getServer()->getDataPath() . "/plugins/Bounty/" . "Bounty.yml", Config::YAML ,array()));
                     $temp = $yml->getAll();
 
@@ -153,11 +153,11 @@ class Main extends PluginBase implements Listener{
         public function CheckIfPlayerHasBounty(Player $player){
             $playern = $player->getName();
             $playerresuts = $this->db->query("SELECT * FROM bounty WHERE player='$playern';");
-            $result = $playerresuts->fetchArray(SQLITE3_ASSOC);
-            if ($result['player'] !== ""){
-                return TRUE;
+            $result = $playerresuts->fetchArray();
+            if ($result['player'] == $player){
+                return $result['player'];
             }else{
-                return FALSE;
+                return;
             }
         }
         
