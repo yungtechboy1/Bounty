@@ -1,9 +1,9 @@
 <?php
 /*
- * KillBounty (v1.0.1.3) by CyberTech++
+ * KillBounty (v1.0.1.4) by CyberTech++
  * Developer: CyeberTech++ (Yungtechboy1)
  * Website: http://www.cybertechpp.com
- * Date: 2/3/2015 11:47 PM (UTC)
+ * Date: 2/7/2015 2:21AM (CST)
  * Copyright & License: (C) 2015 CyberTech++
  */
 
@@ -127,6 +127,7 @@ class Main extends PluginBase implements Listener{
 
 
         public function onPlayerDeath(PlayerDeathEvent $death) {
+            if ($death->getEntity()->getLastDamageCause()->getCause() == 1){
             $yml = (new Config($this->getServer()->getDataPath() . "/plugins/Bounty/" . "Bounty.yml", Config::YAML ,array()));
             $temp = $yml->getAll();
             $player = $death->getEntity();
@@ -148,7 +149,11 @@ class Main extends PluginBase implements Listener{
                     }
                     $this->RemovePlayerBounty($player);
             }
-        }}
+            }}
+            }else{
+                return true;
+            }
+
         }
         public function CheckIfPlayerHasBounty(Player $player){
             $playern = $player->getName();
