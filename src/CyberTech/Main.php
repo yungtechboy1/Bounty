@@ -26,10 +26,10 @@ class Main extends PluginBase implements Listener{
     
         public function onEnable() {
          @mkdir($this->getDataFolder());
-         $this->getLogger()->info("Boutny Plugin Has Been Enabled!");
+         $this->getLogger()->info("Bounty Plugin Has Been Enabled!");
          $this->loadYml();
          //$this->getServer()->getPluginManager()->registerEvents(new Main($this), $this);
-         $this->db = new \SQLite3($this->getDataFolder() . "Boutny.db");
+         $this->db = new \SQLite3($this->getDataFolder() . "Bounty.db");
          $this->db->exec("CREATE TABLE IF NOT EXISTS bounty (id INTEGER PRIMARY KEY AUTOINCREMENT, player TEXT, amount INTEGER, setby TEXT);");
          $this->db->exec("CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT , name TEXT, val TEXT);");
          $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -41,7 +41,7 @@ class Main extends PluginBase implements Listener{
         switch($command->getName()){
 			case "bounty":
                             if ($args[0] === "set" && isset($args[1]) && isset($args[2])){
-                                $this->getLogger()->info("Boutny Plugin Has Been Set Command!");
+                                $this->getLogger()->info("Bounty Plugin Has Been Set Command!");
                                 $this->SetBounty($sender, $args[1] ,$args);
                             }elseif($args[0] === "del"){
                                 if ($args[1]){
